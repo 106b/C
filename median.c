@@ -1,6 +1,6 @@
 //find median of array
 #include "stdio.h"
-#define NUMS 6
+#define NUMS 5
 
 void insertsort(int list[]);
 double median(int list[]);
