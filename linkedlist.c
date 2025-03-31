@@ -10,8 +10,8 @@ struct node{
 
 //core functions
 void insert(struct node *headptr);
-//void delete(struct node *headptr);
-//search(struct node *headptr);
+void delete(struct node *headptr);
+void search(struct node *headptr);
 
 //helper functions
 struct node *traverse(struct node *headptr, int data);
@@ -38,10 +38,10 @@ int main(){
                 insert(&headnode);
                 break;
             case 2:
-                //delete(&headnode);
+                delete(&headnode);
                 break;
             case 3:
-                //search(&headnode);
+                search(&headnode);
                 break;
             case 4:
                 print(&headnode);
@@ -72,7 +72,7 @@ void insert(struct node *headptr){
     printf("Enter item to insert: ");
     scanf("%d", &newNode->data);
     
-    //traverse list and return node adress before new node
+    //traverse list and return node address before new node
     prevNode = traverse(headptr, newNode->data);
     nextNode = prevNode->next;
 
@@ -82,11 +82,52 @@ void insert(struct node *headptr){
         newNode->next = nextNode;
         printf("\nItem added\n");
     } else {
-        printf("\nItem already entered\n");
+        printf("\nItem already entered!\n");
         free(newNode);
     }
 
 }
+
+void delete(struct node *headptr){
+    struct node *prevNode;
+    struct node *delNode;
+    int data; // data to be deleted
+
+    printf("Enter item to be deleted: ");
+    scanf("%d", &data);
+
+    prevNode = traverse(headptr, data);
+    delNode = prevNode->next;
+
+    if(delNode != NULL && delNode->data == data){
+        prevNode->next = delNode->next;
+        free(delNode);
+        delNode = NULL;
+        printf("\nItem deleted\n");
+    } else {
+        printf("\nItem does not exist!\n");
+    }
+
+}
+
+void search(struct node *headptr){
+    struct node *prevNode;
+    struct node *searchNode;
+    int data; // item to be searched for
+
+    printf("Enter item to search for: ");
+    scanf("%d", &data);
+
+    prevNode = traverse(headptr, data);
+    searchNode = prevNode->next;
+
+    if(searchNode != NULL && searchNode->data == data){
+        printf("\nItem found!\n");
+    } else {
+        printf("\nItem does not exist!\n");
+    }
+}
+
 
 //helper functions
 struct node *traverse(struct node *headptr, int data){
