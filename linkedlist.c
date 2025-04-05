@@ -1,7 +1,7 @@
 //basic implementation of linked list in C
 #include "stdio.h"
 #include "stdlib.h"
-#define EXIT 5
+#define EXIT 6
 
 struct node{
     int data;
@@ -12,6 +12,7 @@ struct node{
 void insert(struct node *headptr);
 void delete(struct node *headptr);
 void search(struct node *headptr);
+void insertFront(struct node *headptr);
 
 //helper functions
 struct node *traverse(struct node *headptr, int data);
@@ -30,7 +31,7 @@ int main(){
     printf("\t******************\n");
 
     while(flag != EXIT){
-        printf("\n1) Insert\n2) Delete\n3) Search\n4) Print\n5) Exit\n");
+        printf("\n1) Insert\n2) Delete\n3) Search\n4) Print\n5) Insert Front\n6) Exit\n");
         printf("\nChoose an option: ");
         scanf("%d", &flag);
         switch(flag){
@@ -47,6 +48,9 @@ int main(){
                 print(&headnode);
                 break;
             case 5:
+                insertFront(&headnode);
+                break;
+            case 6:
                 printf("\nGoodbye\n\n");
                 break;
             default:
@@ -127,6 +131,33 @@ void search(struct node *headptr){
         printf("\nItem does not exist!\n");
     }
 }
+
+void insertFront(struct node *headptr){
+    struct node *newNode;
+    int data;
+
+    newNode = malloc(sizeof(struct node));
+
+    if(newNode == NULL){
+        printf("Unable to add item\n");
+        exit(1);
+    }
+
+    printf("\nEnter item: ");
+    scanf("%d", &data);
+
+    
+        newNode->data = data;
+        newNode->next = headptr->next;
+        headptr->next = newNode;
+        printf("\nitem Added\n");
+    
+    
+
+    
+
+}
+
 
 
 //helper functions
