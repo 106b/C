@@ -24,7 +24,7 @@ int main(){
     addNode(10, list);
     addNode(420, list);
     addNode(106, list);
-    //iterativeCopy(list, copyList);
+    iterativeCopy(list, copyList);
     //recursiveCopy(list, copyList);
     printList(list);
     printList(copyList);
@@ -64,4 +64,13 @@ void printList(struct node *list){
     putchar('\n');
 }
 
-void iterativeCopy(struct node *list, struct node *copyList);
+void iterativeCopy(struct node *list, struct node *copyList){
+    struct node *current;
+    current = list->next;
+   
+    while(current != NULL){
+        addNode(current->data, copyList);
+        current = current->next;
+        
+    }
+}
