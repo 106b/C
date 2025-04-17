@@ -6,25 +6,30 @@
 int main(){
 	int wordlen[BUFFER];
 	char c;
-
-	//initialize wordlen index to 0
+	//itialize wordlen index to 0
 	for(int i = 0; i < BUFFER; i++){
 		wordlen[i] = 0;
 	}
 
 	int len = 0;
 	while((c = getchar()) != '\n'){
-		len++;
 		if(c == ' ' ||  c == '\t'){
 			wordlen[len]++;
 			len = 0;
+		} else {
+			len++;
 		}
 	} 
+	wordlen[len]++;
 
 	printf("\nword length\n");
 	for(int i = 1; i < BUFFER; i++){
-		printf("%d ", wordlen[i]);
-	}
+		printf("%d: ", i);
+		for(int j = 0; j < wordlen[i]; j++){
+			putchar('*');
+		}
+
 	putchar('\n');
+	}
 
 }
