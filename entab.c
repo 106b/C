@@ -24,11 +24,11 @@ int getl(char line[], int lim){
 	//if spaceCount == TAB, replace string of spaces with '\t'
 	for(i = 0; (c = getchar()) != EOF && c != '\n' && i < lim-1; i++){
 		if(c == ' '){
-			int j = i; //save place in string
+			//int j = i; //save place in string
 			blankCount++;
 			if(blankCount == TAB){
-				line[j] = '\t';
-				i = j; // move back in string;
+				line[i - (TAB-1)] = '\t';
+				i -= (TAB-1); // move back in string;
 				blankCount = 0; //reset counter
 				printf("tab added\n");
 			} else {
