@@ -27,11 +27,23 @@ int main(){
 
 
 int getl(char line[], int lim){
-	int c, i;
+	int c, i, LOOP;
+	i = 0;
+	LOOP = 1;
 
-	for(i = 0; i < lim-1 && (c=getchar()) != '\n' && c != EOF; i++){
-				line[i] = c;
-			}
+	while(LOOP){
+		if(i >= lim-1){
+			LOOP = 0;
+		} else if((c = getchar()) == '\n'){
+			LOOP = 0;
+		} else if(c == EOF){
+			LOOP = 0;
+		} else {
+			line[i] = c;
+			i++;
+		}
+	}
+
 	if(c == '\n'){
 		line[i] = c;
 		i++;

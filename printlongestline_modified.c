@@ -34,7 +34,7 @@ int getl(char line[], int lim){
 
 	//place char into input up to lim - 1 to save space for null char
 	//
-	for(i = 0; i < lim-1 && (c = getchar()) != EOF && c != '\n'; i++){
+	for(i = 0; i < lim-1 && (c = getchar()) != '\n' && c != EOF; i++){
 		line[i] = c;
 	}
 //keep counting if limit has been reached and there is input
@@ -42,7 +42,7 @@ int getl(char line[], int lim){
 //if newline has been reached, place the newline and increase count
 	int m = 0;
 	if(i >= lim-1){
-		while((c = getchar()) != EOF && c != '\n'){
+		while((c = getchar()) != '\n' && c != EOF){
 			m++;
 		}
 	}

@@ -4,6 +4,7 @@
 #define IN 1
 #define OUT 0
 #define TAB 4
+#define TAB_STOPS 3
 int getl(char line[], int lim);
 
 int main(){
