@@ -2,15 +2,16 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <stdbool.h>
+#include <stdlib.h>
 #define LIMIT 80
 
 void expansion (char str1[], char str2[]);
 
 int main(){
-	char string1[LIMIT] = "";
-	char string2[LIMIT] = "";
+	char string1[LIMIT+1] = "";
+	char string2[LIMIT+1] = "";
 
-	while(fgets(string1, LIMIT, stdin) != NULL && string1[0] != EOF){
+	while(fgets(string1, LIMIT, stdin) != NULL){
 		expansion(string1, string2);
 		printf("%s", string2);
 		string1[0] = '\0';
@@ -53,10 +54,7 @@ void expansion (char str1[], char str2[]){
 				str2[j] = ++start;
 			}
 		}
-	}
-	if(j < (LIMIT - 1))
-	{ 
-		str2[j++] = '\n';
-	}
+	} 
+	str2[j++] = '\n';	
 	str2[j] = '\0';
 }
