@@ -19,9 +19,10 @@ int main(){
 int bitcount(unsigned x){
 
 int b = 0;
-	while(x != 0){
+for (b = 0; x !=; x >>= 1){
+	if (x & 01){
 		b++;
-		x &= (x-1);
-	}	
+	}
+}
 return b;
 }

@@ -6,9 +6,9 @@
 void reverse_string(char str[]);
 
 int main(){
-	char string[LIMIT] = "";
+	char string[LIMIT+1] = "";
 
-	while(fgets(string, LIMIT - 1, stdin) != NULL && string[0] != EOF)
+	while(fgets(string, LIMIT, stdin) != NULL && string[0] != EOF)
 	{
 		reverse_string(string);
 		printf("%s", string);
