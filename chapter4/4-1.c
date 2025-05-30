@@ -30,7 +30,7 @@ int main(){
 // Return first index of t in s, -1 if none
 int strindex(char s[], char t[]){
 	int i, j, k;
-	int rightmost_index = -1;
+ 	int rightmost_index = -1;
 	for (i = 0; s[i] != '\0'; i++) {
 		// For every character in string, compare it with the beginning of the pattern
 		// If the characters are the same, continue with pattern match
