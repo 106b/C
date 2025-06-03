@@ -16,7 +16,7 @@ int main(){
 		pattern[strlen(pattern)-1] = pattern[strlen(pattern)];
 
 		while (fgets(line, LIMIT, stdin) != NULL)
-		       // Find first occurence	
+		      	// Find first occurence	
 		{	int idx = strindex(line, pattern);
 			if (idx >= 0) 
 			{
