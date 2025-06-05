@@ -164,9 +164,6 @@ int getop(char s[])
 		// Do nothing
 	}
 
-	// Handles negatives but breaks subtraction
-	// Subtraction case is always skipped over
-	// How to differentiate between subtraction and negative?
 	if (c == '-')
 	{
 		char sub = c;

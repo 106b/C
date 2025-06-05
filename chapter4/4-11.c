@@ -157,6 +157,7 @@ int getop(char s[])
 	int i = 0;
 	int c = 0;
 	bool neg = false; // Flag for negative number
+	static char buf;
 
 	// Skip white space. First non-whitespace will be in c
 	while ((s[0] = c = getch()) == ' ' || c == '\t')
@@ -170,7 +171,7 @@ int getop(char s[])
 		neg = true;
 		if ((s[0] = c = getch()) == ' ' || c == '\n') // If next character is whitespace, treat as subtract
 		{
-			ungetch(c);
+			buf = c;
 			return sub;
 		}
 
@@ -209,7 +210,7 @@ int getop(char s[])
 	// i.e. 34 4 +, whitespace after the numbers will be ungetted or 34 4+, whitespace and + will be ungetted	
 	if (c != EOF)
 	{
-		ungetch(c);
+		buf = c;
 	}
 
 	if (!neg)
@@ -224,7 +225,6 @@ int getop(char s[])
 // 4-8: Assume pushback will never be more than one character
 // That means array buffer is not needed, only a one character buffer
 // used by both functions
-char buf = '\0';
 bool buf_flag = false; // flag to indicate there is a buffer char
 // Essentially wrappers around getchar()
 int getch(void)
@@ -243,15 +243,8 @@ int getch(void)
 // Push character back on input
 void ungetch(int c)
 {	
-		if(c == EOF)
-		{
-			buf = '\n';
-			buf_flag = true;
-		} else
-		{
 			buf = c;
 			buf_flag = true;	
-		}
 }
 //  Push entire string back onto input using ungetc()
 /*
