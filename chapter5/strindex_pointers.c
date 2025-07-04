@@ -19,7 +19,7 @@ int main(void)
 		if (fgets(s, LIMIT, stdin) != NULL){
 			printf("Enter second string: ");
 			if (fgets(t, LIMIT, stdin) != NULL){\
-				s[strcspn(s, "\n")] = 0;	
+				s[strcspn(s, "\n")] = 0;	// remove newlines		
 				t[strcspn(t, "\n")] = 0;	
 				int index = string_index(s,t);
 				if (index == -1){
